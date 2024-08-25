@@ -59,6 +59,12 @@
         android:text="Sign Up"
         android:id="@+id/btnSignUp"
         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RecyclersView"
+        android:id="@+id/btnRecyclerView"
+        />
 
 
 

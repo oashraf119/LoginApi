@@ -24,10 +24,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class SignUp extends AppCompatActivity {
     ActivitySignUpBinding binding;
     FirebaseAuth auth= FirebaseAuth.getInstance();
     DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
+    ArrayList<User> users = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,26 +59,6 @@ public class SignUp extends AppCompatActivity {
                 String id = mRef.push().getKey();
                 mRef.child("user").child(id).setValue(new User(id,binding.edName.getText().toString(),binding.edPhone.getText().toString(),binding.edEmail.getText().toString()));
                 startActivity(new Intent(SignUp.this, Login.class));
-                mRef.child("user").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            User user = dataSnapshot.getValue(User.class);
-
-
-                            Toast.makeText(SignUp.this, user.getName().toString(), Toast.LENGTH_SHORT).show();
-                            Toast.makeText(SignUp.this, user.getPhone().toString(), Toast.LENGTH_SHORT).show();
-                            Toast.makeText(SignUp.this, user.getEmail().toString(), Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
                 finish();
             }
         } ).addOnFailureListener(new OnFailureListener() {

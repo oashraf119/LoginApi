@@ -15,8 +15,25 @@
         android:text="This is Welcome Activity"
         android:textSize="20sp"
         android:gravity="center"
+        android:padding="16dp"
+        android:id="@+id/textWelcome"
         />
-<Button
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:padding="16dp"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:padding="16dp"
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <Button
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="Logout"
